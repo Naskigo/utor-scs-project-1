@@ -2,13 +2,13 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![alt text](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/da1e004671705f18e0161b013e0057a602f470ef/Diagrams/Network_Topology_ELK.png)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Network_Topology_ELK.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 
-- [Install_elk.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/99b4c08f62610c6030ef281e76025e7857b2e576/Ansible/install_elk.yml)
-- [Install_filebeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_filebeat.yml)
-- [Install_metricbeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_metricbeat.yml)
+- [Install_elk.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_elk.yml)
+- [Install_filebeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_filebeat.yml)
+- [Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
 
 This document contains the following details:
 - Description of the Topologu
@@ -80,7 +80,7 @@ The ELK playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![alt text](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/14b4f05e1994d113c8774a54ed5fd89ebab9c1e6/Diagrams/docker_ps_output.jpg)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/docker_ps_output.jpg)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -100,9 +100,9 @@ These Beats allow us to collect the following information from each machine:
 
 
 ### Using the Playbooks
-- [Install_elk.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/99b4c08f62610c6030ef281e76025e7857b2e576/Ansible/install_elk.yml)
-- [Install_filebeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_filebeat.yml)
-- [Install_metricbeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_metricbeat.yml)
+- [Install_elk.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_elk.yml)
+- [Install_filebeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_filebeat.yml)
+- [Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
 
 In order to use a playbook, you will need to have an Ansible control node already configured. Our control node was an Ansible container running on our jump box provisioner. Assuming you have such a control node provisioned: 
 
@@ -178,14 +178,14 @@ nano /etc/ansible/hosts
 
 Before running your beat playbooks you will need to update the install_filebeat.yml and install_metricbeat.yml files to correctly specify the hosts name to tell Ansible which machine to configure.
 
-- [Install_filebeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_filebeat.yml)
+- [Install_filebeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_filebeat.yml)
 ```
 ---
 - name: installing and launching filebeat
   hosts: webservers
   become: yes 
 ```
-- [Install_metricbeat.yml](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_metricbeat.yml)
+- [Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
 ```
 ---
 - name: installing and launching metricbeat
@@ -202,7 +202,7 @@ $ ansible-playbook /etc/ansible/roles/install_metricbeat.yml
 ```
 - Lastly, navigate to http://[your_elk_server_public_ip]:5601/app/kibana to check that the installations worked as expected. 
 
-![alt text](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/f432e0e5904232b6831e7f316d64c96ca960d81a/Diagrams/Kibana_Home_Page.jpg)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Kibana_Home_Page.jpg)
 
 For Filebeat Status
 ```
@@ -210,7 +210,7 @@ For Filebeat Status
 -- Choose System Logs
 -- Navigate to step 5: Module status and click Check Data
 ```
-![alt text](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/e51089594dd27df73d8c9effb5f493360ba70e8b/Diagrams/Filebeat%20Module%20status%20confirmed.jpg)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Filebeat%20Module%20status%20confirmed.jpg)
 
 For Metricbeat Status
 ```
@@ -218,8 +218,8 @@ For Metricbeat Status
 -- Choose Docker metrics
 -- Navigate to step 5: Module status and click Check Data
 ```
-![alt text](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/e37f1d4fdfe2f18e9232ee637d7028850711e74b/Diagrams/Metricbeat_module_status_confirmed.jpg)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Metricbeat_module_status_confirmed.jpg)
 
 ### Additional Resources : 
-[Ansible_CheetSheet](https://github.com/Naskigo/utor-virt-cyber-project-1/blob/e094ac1e9914dbc027808fad0662bccb06bbbbbb/Ansible/Ansible_CheetSheet.md)
+[Ansible_CheetSheet](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/Ansible_CheetSheet.md)
 
