@@ -115,7 +115,7 @@ Copy the install_elk.yml file to /etc/ansible/roles/
 ```
 curl -o /etc/ansible/roles/install_elk.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/99b4c08f62610c6030ef281e76025e7857b2e576/Ansible/install_elk.yml
 ```
-- Update the ansible hosts file to include the ELK VM private IP so that Ansible can discover and connect to it when attempting to configure your target machine. 
+- Update the ansible hosts file to include the ELK group and private IP so that Ansible can discover and connect to it when attempting to configure your target machine. 
 To explicitly configure a Python 3 interpreter, set the ansible_python_interpreter inventory variable in the hosts file to the location of a Python 3 interpreter, such as /usr/bin/python3. The default interpreter path may also be set in ansible.cfg.
 
 ```
@@ -221,5 +221,10 @@ For Metricbeat Status
 ![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Metricbeat_module_status_confirmed.jpg)
 
 ### Additional Resources : 
-[Ansible_CheetSheet](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/Ansible_CheetSheet.md)
+[Filebeat Documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
+[Metricbeat Documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)
+[ELK Documenation](https://www.elastic.co/guide/index.html)
+[Ansible `pip` Module](https://docs.ansible.com/ansible/latest/modules/pip_module.html#pip-module)
+[Ansible `docker_container` Module](https://docs.ansible.com/ansible/latest/modules/docker_container_module.html#docker-container-module)
+[Ansible `command` Module](https://docs.ansible.com/ansible/latest/modules/command_module.html#command-module)
 
