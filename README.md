@@ -221,10 +221,10 @@ For Metricbeat Status
 ![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Diagrams/Metricbeat_module_status_confirmed.jpg)
 
 ### Additional Resources : 
-[Filebeat Documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
-[Metricbeat Documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)
-[ELK Documenation](https://www.elastic.co/guide/index.html)
-[Ansible `pip` Module](https://docs.ansible.com/ansible/latest/modules/pip_module.html#pip-module)
-[Ansible `docker_container` Module](https://docs.ansible.com/ansible/latest/modules/docker_container_module.html#docker-container-module)
-[Ansible `command` Module](https://docs.ansible.com/ansible/latest/modules/command_module.html#command-module)
+- [Filebeat Documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)
+- [Metricbeat Documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html)
+- [ELK Documenation](https://www.elastic.co/guide/index.html)
+- [Ansible `pip` Module](https://docs.ansible.com/ansible/latest/modules/pip_module.html#pip-module)
+- [Ansible `docker_container` Module](https://docs.ansible.com/ansible/latest/modules/docker_container_module.html#docker-container-module)
+- [Ansible `command` Module](https://docs.ansible.com/ansible/latest/modules/command_module.html#command-module)
 
