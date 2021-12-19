@@ -52,7 +52,6 @@ Only the jump box provisioner machine can accept connections from the Internet. 
 
 Machines within the network can only be accessed by the ansible container on the jump box provisioner using SSH keys. 
 List of machines that have access to the ELK VM: 
-- Workstation Public IP via TCP on port 5601
 - Jump Box Provisioner Ansible container IP: 10.0.0.4 via SSH keys on port 22
 
 A summary of the access policies in place can be found in the table below.
