@@ -11,7 +11,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 - [Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -24,13 +24,13 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting in-bound access to the network.
-- Load balancers plays a crucial role in cybersecurity. A load balancer's ability to manage flow of information between the server and endpoint device (PC, laptop, cellphone etc...) provides a security function that defends against distributed denial-of-service (DDoS) attacks.
+- Load balancers play a crucial role in cybersecurity. A load balancer's ability to manage flow of information between the server and endpoint device (PC, laptop, cellphone etc...) provides a security function that defends against distributed denial-of-service (DDoS) attacks.
 
 - The advantage of a jump box is that it is a hardened and monitored device that spans two different security zones which provides a secured means of access between them. Admins first connect to the jump box before conducting administrative tasks within the network.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the data and system logs.
-- What does Filebeat watch for? Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
-- What does Metricbeat record? Metricbeat is a lightweight shipper to periodically collect metrics from the operating system and from services running on the server. In this configuration, metricbeat takes the metrics and statistics that it collects and ships them to Elasticsearch or Logstash.
+- What does Filebeat watch for? Filebeat is a lightweight shipper for forwarding and centralizing log data. Installed as an agent on your servers, Filebeat monitors the log files that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+- What does Metricbeat record? Metricbeat is a lightweight shipper that collects metrics from the operating system and from services running on the server. In this configuration, metricbeat takes the docker metrics and statistics that it collects and ships them to Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
 
@@ -47,28 +47,27 @@ The configuration details of each machine may be found below.
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the ELK Server machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the ELK machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - Workstation Public IP via TCP on port 5601.
 
 Machines within the network can only be accessed by the ansible container on the jump box provisioner using SSH keys. 
-Which machine did you allow to access your ELK VM? What was its IP address?
+List of machines that have access to the ELK VM: 
 - Workstation Public IP via TCP on port 5601
-- Jump Box Provisioner IP: 10.0.0.4 via SSH keys on port 22
+- Jump Box Provisioner Ansible container IP: 10.0.0.4 via SSH keys on port 22
 
 A summary of the access policies in place can be found in the table below.
 
 | Name                 	| Publicly Accessible 	| Allowed IP Addresses                	|
 |----------------------	|---------------------	|-------------------------------------	|
-| Jump Box Provisioner 	| No                  	| Workstation Public IP (SSH port 22) 	|
+| Jump Box Provisioner 	| Yes               	| Workstation Public IP (SSH port 22) 	|
 | Web-1                	| No                  	| 10.0.0.4 (SSH port 22)              	|
 | Web-2                	| No                  	| 10.0.0.4 (SSH port 22)              	|
-| ELK Server           	| No                  	| Workstation Public IP (port 5601)   	|
-| Load Balancer        	| No                  	| Workstation Public IP (HTTP port 80) 	|
+| ELK Server           	| Yes                  	| Workstation Public IP (port 5601)   	|
+| Load Balancer        	| Yes                  	| Workstation Public IP (HTTP port 80) 	|
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because 
--Using Ansible to automate configurations ensures that the provisioning of all YMAL scripts run identically everywhere. This also ensures that automated configurations will do exactly the same thing every time they run helping eliminate as much variability between configurations as possible.
+Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because using Ansible to automate configurations ensures that the provisioning of all YMAL scripts run identically everywhere. This also ensures that automated configurations will do exactly the same thing every time they run helping eliminate as much variability between configurations as possible.
 
 The ELK playbook implements the following tasks:
 - Installs docker.io: The Docker engine, used for running containers.
@@ -76,7 +75,7 @@ The ELK playbook implements the following tasks:
 - Installs Docker module: Python client for Docker. Required by Ansible to control the state of Docker containers. 
 - Configures the target VM to use the appropriate memory to allow the ELK container to efficiently run.
 - Downloads and launches a docker elk container with the appropriate port mappings.
-- Enables service docker on boot so that if you restart your ELK VM, the docker service start up automatically.
+- Enables service docker on boot so that if you restart your ELK VM, the docker service starts up automatically.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -108,10 +107,13 @@ In order to use a playbook, you will need to have an Ansible control node alread
 
 SSH into the control node and follow the steps below:
 
-### Instructions for using ELK playbook
+### Instructions for Using ELK Playbook
 
-Copy the install_elk.yml file to /etc/ansible/roles/
-
+- Create a roles directory in /etc/ansible
+```
+$ mkdir /etc/ansible/roles
+```
+- Copy the install_elk.yml file to /etc/ansible/roles/
 ```
 curl -o /etc/ansible/roles/install_elk.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/99b4c08f62610c6030ef281e76025e7857b2e576/Ansible/install_elk.yml
 ```
@@ -125,7 +127,7 @@ nano /etc/ansible/hosts
 [elk]
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
-Before running your elk playbook you will need to update install_elk.yml file to tell Ansible which machine to configure.
+- Before running your elk playbook you will need to update install_elk.yml file with the appropriate hosts group [elk] to tell Ansible which machine to configure.
 
 ```
 ---
@@ -133,17 +135,17 @@ Before running your elk playbook you will need to update install_elk.yml file to
   hosts: elk
   become: yes 
 ```
-Run the install_elk.yml playbook
+- Run the install_elk.yml playbook
 ```
 ansible-playbook /etc/ansible/roles/install_elk.yml
 ```
-Navigate to http://[your_elk_server_public_ip]:5601/app/kibana to check that the installation worked as expected. If you can not connect, verify that your network security group/firewall rules allow connections from your Workstation Public IP via TCP on port 5601.
+- Navigate to http://[your_elk_server_public_ip]:5601/app/kibana to check that the installation worked as expected. If you can not connect, verify that your network security group/firewall rules allow connections from your Workstation Public IP via TCP on port 5601.
 
-### Instructions for using beat playbooks
+### Instructions for Using Beat Playbooks
 
 If you wish to install filebeat and metricbeat on the DVWA VMs, follow these steps: 
 
-- Copy the install_filebeat.yml and install_elk.yml files to /etc/ansible/roles/
+- Copy the install_filebeat.yml and metricbeat_elk.yml files to /etc/ansible/roles/
 
 ```
 Filebeat
@@ -160,7 +162,7 @@ curl -o /etc/ansible/roles/metricbeat.yml https://github.com/Naskigo/utor-virt-c
 curl -o /etc/ansible/files/metricbeat-config.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/4a09a7a796c0dce481bd0f3612895d6782712ef6/Ansible/metricbeat-config.yml
 ```
 
-- Next you need to specify in the ansible container hosts file a different host name containing the DVWA servers IP addresses.
+- Next you need to specify in the ansible container hosts file a different host group name [webservers] with the DVWA servers IP addresses to be referenced in the Ansible playbooks to target the correct machines.
 
 ```
 nano /etc/ansible/hosts
@@ -174,16 +176,16 @@ nano /etc/ansible/hosts
 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 ```
 
-Before running your beat playbooks you will need to update the install_filebeat.yml and install_metricbeat.yml files to correctly specify the hosts name to tell Ansible which machine to configure.
+- Before running your beat playbooks you will need to update the install_filebeat.yml and install_metricbeat.yml files to correctly specify the host group name [webservers] to tell Ansible which machine to configure.
 
-- [Install_filebeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_filebeat.yml)
+[Install_filebeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_filebeat.yml)
 ```
 ---
 - name: installing and launching filebeat
   hosts: webservers
   become: yes 
 ```
-- [Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
+[Install_metricbeat.yml](https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/install_metricbeat.yml)
 ```
 ---
 - name: installing and launching metricbeat
@@ -191,7 +193,7 @@ Before running your beat playbooks you will need to update the install_filebeat.
   become: yes 
 ```
 
-Next, run the playbooks 
+- Next, run the playbooks 
 ```
 $ ansible-playbook /etc/ansible/roles/install_filebeat.yml
 ```
