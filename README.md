@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/b03cfae3299dbc152b2fd6d27f204b5060446f2f/Diagrams/Network_Topology_ELK.png)
+![alt text](https://github.com/Naskigo/utor-scs-project-1/blob/aa485d60dc81ed0804a278c5e51d8f89b9be1c12/Diagrams/Network_Topology_ELK.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
 
