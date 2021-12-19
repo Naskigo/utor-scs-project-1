@@ -155,9 +155,7 @@ curl -o /etc/ansible/roles/metricbeat.yml https://github.com/Naskigo/utor-virt-c
 ```
 
 - Copy the filebeat-config.yml and metricbeat-config.yml files to /etc/ansible/files
-```
- 
-```
+
 ```
 curl -o /etc/ansible/files/metricbeat-config.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/4a09a7a796c0dce481bd0f3612895d6782712ef6/Ansible/metricbeat-config.yml
 ```
