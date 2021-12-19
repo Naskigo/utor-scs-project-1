@@ -47,8 +47,8 @@ The configuration details of each machine may be found below.
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the ELK machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Workstation Public IP via TCP on port 5601.
+Only the jump box provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- Workstation Public IP via SSH keys port 22.
 
 Machines within the network can only be accessed by the ansible container on the jump box provisioner using SSH keys. 
 List of machines that have access to the ELK VM: 
