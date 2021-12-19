@@ -67,7 +67,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because using Ansible to automate configurations ensures that the provisioning of all YMAL scripts run identically everywhere. This also ensures that automated configurations will do exactly the same thing every time they run helping eliminate as much variability between configurations as possible.
+Ansible was used to automate the configuration of the ELK machine. No configuration was performed manually, which is advantageous because using Ansible to automate configurations ensures that the provisioning of all YAML scripts run identically everywhere. This also ensures that automated configurations will do exactly the same thing every time they run helping eliminate as much variability between configurations as possible.
 
 The ELK playbook implements the following tasks:
 - Installs docker.io: The Docker engine, used for running containers.
@@ -145,24 +145,27 @@ ansible-playbook /etc/ansible/roles/install_elk.yml
 
 If you wish to install filebeat and metricbeat on the DVWA VMs, follow these steps: 
 
-- Copy the install_filebeat.yml and metricbeat_elk.yml files to /etc/ansible/roles/
+- Copy the install_filebeat.yml and install_metricbeat.yml files to /etc/ansible/roles/
 
 ```
 Filebeat
-curl -o /etc/ansible/roles/filebeat.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_filebeat.yml
+curl -o /etc/ansible/roles/install_filebeat.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_filebeat.yml
 ```
 ```
 Metricbeat
-curl -o /etc/ansible/roles/metricbeat.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_metricbeat.yml
+curl -o /etc/ansible/roles/install_metricbeat.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/321c2e991e0fbd4b5ab9584c0e816f502cd514b0/Ansible/install_metricbeat.yml
 ```
 
-- Copy the filebeat-config.yml and metricbeat-config.yml files to /etc/ansible/files
+- Copy the filebeat-config.yml and metricbeat-config.yml files to /etc/ansible/files. If you don't have a files directory you must create one.
 
+```
+curl -o /etc/ansible/files/filebeat-config.yml https://github.com/Naskigo/utor-scs-project-1/blob/42ea4e5d76bac29491e44683ac472d94497c68fd/Ansible/filebeat-config.yml
+```
 ```
 curl -o /etc/ansible/files/metricbeat-config.yml https://github.com/Naskigo/utor-virt-cyber-project-1/blob/4a09a7a796c0dce481bd0f3612895d6782712ef6/Ansible/metricbeat-config.yml
 ```
 
-- Next you need to specify in the ansible container hosts file a different host group name [webservers] with the DVWA servers IP addresses to be referenced in the Ansible playbooks to target the correct machines.
+- Next you need to specify in the ansible container hosts file a different host group name [webservers] with the DVWA servers IP addresses. This group will be referenced in the YAML files to target the correct machines.
 
 ```
 nano /etc/ansible/hosts
