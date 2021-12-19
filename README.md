@@ -58,11 +58,11 @@ A summary of the access policies in place can be found in the table below.
 
 | Name                 	| Publicly Accessible 	| Allowed IP Addresses                	|
 |----------------------	|---------------------	|-------------------------------------	|
-| Jump Box Provisioner 	| Yes               	| Workstation Public IP (SSH port 22) 	|
+| Jump Box Provisioner 	| No               	| Workstation Public IP (SSH port 22) 	|
 | Web-1                	| No                  	| 10.0.0.4 (SSH port 22)              	|
 | Web-2                	| No                  	| 10.0.0.4 (SSH port 22)              	|
-| ELK Server           	| Yes                  	| Workstation Public IP (port 5601)   	|
-| Load Balancer        	| Yes                  	| Workstation Public IP (HTTP port 80) 	|
+| ELK Server           	| No                  	| Workstation Public IP (port 5601)   	|
+| Load Balancer        	| No                  	| Workstation Public IP (HTTP port 80) 	|
 
 ### Elk Configuration
 
